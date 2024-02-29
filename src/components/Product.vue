@@ -19,24 +19,18 @@
     </v-card-subtitle>
 
     <v-card-actions>
-      <v-btn
-      v-if:="product.category == 'jewelery'"
+      <router-link :to="'/show-id/' + product.id">
+        <v-btn
           color="orange-lighten-2"
           variant="text"
-      >
-        Explore
-      </v-btn>
-      <span v-else:> NO DESCRIPTION </span>
+        >
+          НОМЕР ID
+        </v-btn>
+
+      </router-link>
+      
 
       <v-spacer></v-spacer>
-
-      <v-btn
-          color="orange-lighten-2"
-          variant="text"
-          @click="deleteProduct"
-      >
-        Delete
-      </v-btn>
 
       <v-btn
           :icon="show ? 'mdi-chevron-up' : 'mdi-chevron-down'"
@@ -86,9 +80,6 @@ export default {
         this.$emit('viewedProduct')
       //}
       
-    },
-    deleteProduct() {
-      this.$emit('delete-product', this.product.id)
     }
   }
 }

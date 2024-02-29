@@ -20,8 +20,11 @@
       <router-link to="admin-list">
         <v-tab :value="5">Admin List</v-tab>
       </router-link>
-      <router-link to="generator">
+      <router-link to="/generator">
         <v-tab :value="6">Generator</v-tab>
+      </router-link>
+      <router-link to="/product-info/1">
+        <v-tab :value="7">First Element</v-tab>
       </router-link>
     </v-tabs>
     

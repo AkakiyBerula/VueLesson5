@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Products</h1>
+    <h1 class="text-center">Products</h1>
     <v-container>
       <v-row justify="space-between">
         <v-col>
@@ -19,7 +19,6 @@
           <product
             :product="product"
             @viewed-product.once="viewedProducts++"
-            @delete-product="deleteProduct"
           />
         </v-col>
       </v-row>
@@ -54,9 +53,6 @@ export default {
         .catch(error => {
           console.log(error)
         })
-    },
-    deleteProduct(id) {
-      this.products = this.products.filter(product => product.id != id)
     }
   },
   mounted() {
