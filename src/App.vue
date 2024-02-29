@@ -1,20 +1,42 @@
 <template>
-  <header>
+  <div>
+    <v-tabs
+      v-model="tab"
+      align-tabs="end"
+      color="deep-purple-accent-4"
+    >
+      <router-link to="/">
+        <v-tab :value="1">Products</v-tab>
+      </router-link>
+      <router-link to="/hello-user">
+        <v-tab :value="2">Hello User</v-tab>
+      </router-link>
+      <router-link to="/form">
+        <v-tab :value="3">Form</v-tab>
+      </router-link>
+      <router-link to="/register">
+        <v-tab :value="4">Register</v-tab>
+      </router-link>
+      <router-link to="admin-list">
+        <v-tab :value="5">Admin List</v-tab>
+      </router-link>
+      <router-link to="generator">
+        <v-tab :value="6">Generator</v-tab>
+      </router-link>
+    </v-tabs>
     
-  </header>
-
-  <main>
-    <HelloWorld msg="Hello" />
-  </main>
+    <router-view/>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
-  name: "App",
-  components: {
-    HellowWorld
+  name: 'App',
+  data()  {
+    return {
+      tab: null
+    }
   }
 }
 </script>
@@ -47,3 +69,4 @@ header {
   }
 }
 </style>
+
