@@ -14,17 +14,20 @@
       <div @click="redirectTo('form')">
         <v-tab :value="3">Form</v-tab>
       </div>
+      <div @click="redirectTo('login')">
+        <v-tab :value="4">Login</v-tab>
+      </div>
       <div @click="redirectTo('register')">
-        <v-tab :value="4">Register</v-tab>
+        <v-tab :value="5">Register</v-tab>
       </div>
       <div @click="redirectTo('admin-list')">
-        <v-tab :value="5">Admin List</v-tab>
+        <v-tab :value="6">Admin List</v-tab>
       </div>
       <div @click="redirectTo('generator')">
-        <v-tab :value="6">Generator</v-tab>
+        <v-tab :value="7">Generator</v-tab>
       </div>
       <div @click="redirectTo('list')">
-        <v-tab :value="7">List</v-tab>
+        <v-tab :value="8">List</v-tab>
       </div>
     </v-tabs>
     
@@ -38,7 +41,8 @@ export default {
   name: 'App',
   data()  {
     return {
-      tab: null
+      tab: null,
+      loggedIn: false
     }
   },
   methods: {

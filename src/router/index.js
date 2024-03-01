@@ -6,6 +6,7 @@ import FormEvent from "../components/FormEvent.vue"
 import GenerateItems from "../components/GenerateItems.vue";
 import Pagination from "../components/Pagination.vue";
 import FilterList from "../components/FilterList.vue";
+import Login from "../components/Login.vue"
 
 const routes = [
     { 
@@ -29,14 +30,20 @@ const routes = [
         component: FormEvent
     },
     {
+        path: '/login',
+        name: 'login',
+        component: Login
+    },
+    {
         path: '/generator',
         name: 'generator',
-        component: GenerateItems
+        component: GenerateItems,
     },
     {
         path: '/list',
         name: 'list',
         component: Pagination,
+        meta: { requiresAuth: true },
         children: [
             {
                 path: 'filter-list',
@@ -52,5 +59,24 @@ const router = createRouter({
     history: createWebHistory(),
     routes
 })
+
+router.beforeEach((to, from, next) => {
+    if (to.matched.some(record => record.meta.requiresAuth)) {
+      if (!isLoggedIn()) {
+        next({
+          path: '/login',
+          query: { redirect: to.fullPath }
+        });
+      } else {
+        next();
+      }
+    } else {
+      next();
+    }
+});
+
+function isLoggedIn() {
+    return localStorage.getItem('loggedIn') === 'true';
+}
 
 export default router
