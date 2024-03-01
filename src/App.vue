@@ -51,6 +51,9 @@ export default {
         name: nameRoute,
       })
     }
+  },
+  mounted() {
+    console.log(this.$route.meta.message);
   }
   
 }

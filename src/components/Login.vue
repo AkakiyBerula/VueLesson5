@@ -50,6 +50,9 @@ export default {
       const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
       return passwordPattern.test(password)
     }
+  },
+  mounted() {
+    console.log(this.$route.meta.message);
   }
 };
 </script>

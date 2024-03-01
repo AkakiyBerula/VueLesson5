@@ -57,6 +57,7 @@ export default {
   },
   mounted() {
     this.getProducts();
+    console.log(this.$route.meta.message);
   }
 
 }

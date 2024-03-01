@@ -12,32 +12,50 @@ const routes = [
     { 
         path: '/',
         name: 'products',
-        component: Products
+        component: Products,
+        meta: {
+            message: messagePattern('products')
+        }
     },
     {
         path: '/show-id/:id',
         name: 'show-id',
-        component: ShowID
+        component: ShowID,
+        meta: {
+            message: messagePattern('show-id')
+        }
     },
     {
         path: '/hello-user',
         name: 'hello',
         component: HelloWorld,
+        meta: {
+            message: messagePattern('hello')
+        }
     },
     {
         path: '/form',
         name: 'form',
-        component: FormEvent
+        component: FormEvent,
+        meta: {
+            message: messagePattern('form')
+        }
     },
     {
         path: '/login',
         name: 'login',
-        component: Login
+        component: Login,
+        meta: {
+            message: messagePattern('login')
+        }
     },
     {
         path: '/generator',
         name: 'generator',
         component: GenerateItems,
+        meta: {
+            message: messagePattern('generator')
+        }
     },
     {
         path: '/list',
@@ -61,6 +79,9 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
+    document.title = to.meta.title || 'My App';
+
+
     if (to.matched.some(record => record.meta.requiresAuth)) {
       if (!isLoggedIn()) {
         next({
@@ -74,6 +95,10 @@ router.beforeEach((to, from, next) => {
       next();
     }
 });
+
+function messagePattern(data) {
+    return 'Була відкрита сторінка ' + data + '!' 
+}
 
 function isLoggedIn() {
     return localStorage.getItem('loggedIn') === 'true';
