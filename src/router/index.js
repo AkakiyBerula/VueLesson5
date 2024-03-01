@@ -21,6 +21,7 @@ const routes = [
         path: '/show-id/:id',
         name: 'show-id',
         component: ShowID,
+        props: true,
         meta: {
             message: messagePattern('show-id')
         }

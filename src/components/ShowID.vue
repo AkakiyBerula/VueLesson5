@@ -1,6 +1,7 @@
 <template>
   <v-container class="bg-info text-center">
     <p> Номер id цього товару: {{ this.$route.params.id }}</p>
+    <p> Номер id, переданий через props {{ id }}</p>
   </v-container>
 </template>
 
@@ -8,7 +9,7 @@
 
 export default {
   name: 'ShowID',
-  
+  props: ["id"]
 }
 
 </script>
