@@ -5,27 +5,27 @@
       align-tabs="end"
       color="deep-purple-accent-4"
     >
-      <router-link to="/">
+      <div @click="redirectTo('products')">
         <v-tab :value="1">Products</v-tab>
-      </router-link>
-      <router-link to="/hello-user">
+      </div>
+      <div @click="redirectTo('hello')">
         <v-tab :value="2">Hello User</v-tab>
-      </router-link>
-      <router-link to="/form">
+      </div>
+      <div @click="redirectTo('form')">
         <v-tab :value="3">Form</v-tab>
-      </router-link>
-      <router-link to="/register">
+      </div>
+      <div @click="redirectTo('register')">
         <v-tab :value="4">Register</v-tab>
-      </router-link>
-      <router-link to="admin-list">
+      </div>
+      <div @click="redirectTo('admin-list')">
         <v-tab :value="5">Admin List</v-tab>
-      </router-link>
-      <router-link to="/generator">
+      </div>
+      <div @click="redirectTo('generator')">
         <v-tab :value="6">Generator</v-tab>
-      </router-link>
-      <router-link to="/list">
+      </div>
+      <div @click="redirectTo('list')">
         <v-tab :value="7">List</v-tab>
-      </router-link>
+      </div>
     </v-tabs>
     
     <router-view/>
@@ -40,7 +40,15 @@ export default {
     return {
       tab: null
     }
+  },
+  methods: {
+    redirectTo(nameRoute) {
+      this.$router.push({
+        name: nameRoute,
+      })
+    }
   }
+  
 }
 </script>
 

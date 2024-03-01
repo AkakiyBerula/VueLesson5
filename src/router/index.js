@@ -9,32 +9,38 @@ import FilterList from "../components/FilterList.vue";
 
 const routes = [
     { 
-        path: '/', 
+        path: '/',
+        name: 'products',
         component: Products
     },
     {
         path: '/show-id/:id',
-        name: "",
+        name: 'show-id',
         component: ShowID
     },
     {
         path: '/hello-user',
+        name: 'hello',
         component: HelloWorld,
     },
     {
         path: '/form',
+        name: 'form',
         component: FormEvent
     },
     {
         path: '/generator',
+        name: 'generator',
         component: GenerateItems
     },
     {
         path: '/list',
+        name: 'list',
         component: Pagination,
         children: [
             {
                 path: 'filter-list',
+                name: 'filter-list',
                 component: FilterList
             }
         ]
