@@ -47,10 +47,13 @@ export default {
   },
   methods: {
     redirectTo(nameRoute) {
-      this.$router.push({
-        name: nameRoute,
-      })
+    const routeExists = this.$router.hasRoute(nameRoute);
+    if (routeExists) {
+        this.$router.push({ name: nameRoute });
+    } else {
+        this.$router.push({ name: 'not-found' });
     }
+}
   },
   mounted() {
     console.log(this.$route.meta.message);

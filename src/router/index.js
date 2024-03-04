@@ -6,7 +6,8 @@ import FormEvent from "../components/FormEvent.vue"
 import GenerateItems from "../components/GenerateItems.vue";
 import Pagination from "../components/Pagination.vue";
 import FilterList from "../components/FilterList.vue";
-import Login from "../components/Login.vue"
+import Login from "../components/Login.vue";
+import NotFound from "../components/NotFound.vue"
 
 const routes = [
     { 
@@ -70,6 +71,11 @@ const routes = [
                 component: FilterList
             }
         ]
+    },
+    {
+        path: "/not-found",
+        name: "not-found",
+        component: NotFound
     }
 ]
 
@@ -80,9 +86,6 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-    document.title = to.meta.title || 'My App';
-
-
     if (to.matched.some(record => record.meta.requiresAuth)) {
       if (!isLoggedIn()) {
         next({
