@@ -42,7 +42,8 @@ export default {
   data()  {
     return {
       tab: null,
-      loggedIn: false
+      loggedIn: true,
+      isAdmin: false
     }
   },
   methods: {

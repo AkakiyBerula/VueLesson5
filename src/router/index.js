@@ -7,7 +7,8 @@ import GenerateItems from "../components/GenerateItems.vue";
 import Pagination from "../components/Pagination.vue";
 import FilterList from "../components/FilterList.vue";
 import Login from "../components/Login.vue";
-import NotFound from "../components/NotFound.vue"
+import NotFound from "../components/NotFound.vue";
+import AdminList from "../components/AdminList.vue"
 
 const routes = [
     { 
@@ -52,6 +53,12 @@ const routes = [
         }
     },
     {
+        path: '/admin-list',
+        name: 'admin-list',
+        component: AdminList,
+        meta: { requiresAdmin: true }
+    },
+    {
         path: '/generator',
         name: 'generator',
         component: GenerateItems,
@@ -86,11 +93,16 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-    if (to.matched.some(record => record.meta.requiresAuth)) {
-      if (!isLoggedIn()) {
+    if (to.matched.some(record => record.meta.requiresAuth || record.meta.requiresAdmin)) {
+      if (to.meta.requiresAuth && !isLoggedIn()) {
         next({
           path: '/login',
           query: { redirect: to.fullPath }
+        });
+      } else if (to.meta.requiresAdmin && !isAdminRole()) {
+        next({
+            path: '/not-found',
+            query: { redirect: to.fullPath }
         });
       } else {
         next();
@@ -100,12 +112,21 @@ router.beforeEach((to, from, next) => {
     }
 });
 
+
+router.afterEach((to, from) => {
+    console.log("Перехід нас сторінку ", to.name, " була виконано успішно(afterEach)!")
+});
+
 function messagePattern(data) {
     return 'Була відкрита сторінка ' + data + '!' 
 }
 
 function isLoggedIn() {
     return localStorage.getItem('loggedIn') === 'true';
+}
+
+function isAdminRole() {
+    return localStorage.getItem('isAdmin') === 'Admin';
 }
 
 export default router
