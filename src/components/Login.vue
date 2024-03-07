@@ -3,7 +3,7 @@
     <v-form @submit.prevent="submitForm">
       <v-text-field v-model="formData.name" label="Електронна пошта" required :error-messages="errors.name"></v-text-field>
       <v-text-field v-model="formData.email" label="Пароль" required :error-messages="errors.email"></v-text-field>
-      <v-btn type="submit" color="primary">Надіслати</v-btn>
+      <v-btn type="submit" color="primary"> Надіслати </v-btn>
     </v-form>
   </v-container>
 </template>
