@@ -15,6 +15,8 @@
     <Counter />
 
     <ToggleModel />
+
+    <DynamicClass />
   </div>
 </template>
 
@@ -22,7 +24,8 @@
 import SingleModel from './model/SingleModel.vue';
 import BindingData from './model/BindingData.vue';
 import Counter from './model/Counter.vue';
-import ToggleModel from './model/ToggleModel.vue'
+import ToggleModel from './model/ToggleModel.vue';
+import DynamicClass from './model/DynamicClass.vue'
 
 export default {
   name: "HelloWorld",
@@ -30,7 +33,8 @@ export default {
     SingleModel,
     BindingData,
     Counter,
-    ToggleModel
+    ToggleModel,
+    DynamicClass
   },
   data() {
     return {
