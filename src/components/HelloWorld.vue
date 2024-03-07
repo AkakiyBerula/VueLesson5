@@ -9,18 +9,24 @@
     <v-divider></v-divider>
 
     <BindingData />
+
+    <v-divider></v-divider>
+
+    <Counter />
   </div>
 </template>
 
 <script>
 import SingleModel from './model/SingleModel.vue';
 import BindingData from './model/BindingData.vue';
+import Counter from './model/Counter.vue';
 
 export default {
   name: "HelloWorld",
   components: {
     SingleModel,
-    BindingData
+    BindingData,
+    Counter
   },
   data() {
     return {
