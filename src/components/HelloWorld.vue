@@ -1,18 +1,26 @@
 <template>
   <div class="greetings">
     <h1 class="green text-center">Hello User</h1>
-    <p> {{ input }}</p>
+
+    <v-divider></v-divider>
+
     <SingleModel />
+
+    <v-divider></v-divider>
+
+    <BindingData />
   </div>
 </template>
 
 <script>
 import SingleModel from './model/SingleModel.vue';
+import BindingData from './model/BindingData.vue';
 
 export default {
   name: "HelloWorld",
   components: {
-    SingleModel
+    SingleModel,
+    BindingData
   },
   data() {
     return {
