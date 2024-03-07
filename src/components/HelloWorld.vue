@@ -13,6 +13,8 @@
     <v-divider></v-divider>
 
     <Counter />
+
+    <ToggleModel />
   </div>
 </template>
 
@@ -20,13 +22,15 @@
 import SingleModel from './model/SingleModel.vue';
 import BindingData from './model/BindingData.vue';
 import Counter from './model/Counter.vue';
+import ToggleModel from './model/ToggleModel.vue'
 
 export default {
   name: "HelloWorld",
   components: {
     SingleModel,
     BindingData,
-    Counter
+    Counter,
+    ToggleModel
   },
   data() {
     return {
