@@ -1,16 +1,25 @@
 <template>
   <div class="greetings">
-    <h1 class="green  text-center">Hello User</h1>
+    <h1 class="green text-center">Hello User</h1>
+    <p> {{ input }}</p>
+    <SingleModel />
   </div>
 </template>
 
-<script setup>
-defineProps({
-  msg: {
-    type: String,
-    required: true
+<script>
+import SingleModel from './model/SingleModel.vue';
+
+export default {
+  name: "HelloWorld",
+  components: {
+    SingleModel
+  },
+  data() {
+    return {
+      input: ''
+    }
   }
-})
+}
 </script>
 
 <style scoped>
