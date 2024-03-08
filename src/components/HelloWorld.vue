@@ -2,6 +2,11 @@
   <div class="greetings">
     <h1 class="green text-center">Hello User</h1>
 
+    <div>
+      <CustomSelect :options="['Червоний', 'Синій', 'Зелений', 'Жовтий', 'Оранжевий', 'Фіолетовий']" @sel="chooseSelectedOptions" />
+      <p class="text-justify">Вибраний улюблений колір: {{ selectedOption }}</p>
+    </div>
+
     <v-divider></v-divider>
 
     <SingleModel />
@@ -25,7 +30,8 @@ import SingleModel from './model/SingleModel.vue';
 import BindingData from './model/BindingData.vue';
 import Counter from './model/Counter.vue';
 import ToggleModel from './model/ToggleModel.vue';
-import DynamicClass from './model/DynamicClass.vue'
+import DynamicClass from './model/DynamicClass.vue';
+import CustomSelect from './model/CustomSelect.vue';
 
 export default {
   name: "HelloWorld",
@@ -34,11 +40,19 @@ export default {
     BindingData,
     Counter,
     ToggleModel,
-    DynamicClass
+    DynamicClass,
+    CustomSelect
   },
   data() {
     return {
-      input: ''
+      input: '',
+      selectedOption: ''
+    }
+  },
+  methods: {
+    chooseSelectedOptions (newValue) {
+      console.log ("Дані передано")
+      this.selectedOption = newValue
     }
   }
 }
