@@ -1,8 +1,8 @@
 <template>
   <v-container>
     <v-form @submit.prevent="submitForm">
-      <v-text-field v-model="formData.name" label="Електронна пошта" required :error-messages="errors.name"></v-text-field>
-      <v-text-field v-model="formData.email" label="Пароль" required :error-messages="errors.email"></v-text-field>
+      <v-text-field v-model="formData.email" label="Електронна пошта" required :error-messages="errors.email"></v-text-field>
+      <v-text-field v-model="formData.password" label="Пароль" required :error-messages="errors.password"></v-text-field>
       <v-btn type="submit" color="primary"> Надіслати </v-btn>
     </v-form>
   </v-container>
@@ -49,6 +49,22 @@ export default {
     isValidPassword(password) {
       const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
       return passwordPattern.test(password)
+    }
+  },
+  watch: {
+    'formData.email' (newValue) {
+      if (!this.formData.email) {
+        this.errors.email.push("Будь ласка, введіть електронну пошту.");
+      } else if (!this.isValidEmail(this.formData.email)) {
+        this.errors.email.push("Будь ласка, введіть правильну електронну пошту.");
+      }
+    },
+    'formData.password' (newValue) {
+      if (!this.formData.password) {
+        this.errors.password.push("Будь ласка, введіть пароль.");
+      } else if (!this.isValidEmail(this.formData.password)) {
+        this.errors.password.push("Пароль має бути не менше ніж 8 символів і мати хоча б одну літеру, одну цифру і один символ.");
+      }
     }
   },
   mounted() {
